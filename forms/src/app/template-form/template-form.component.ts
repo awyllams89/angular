@@ -9,6 +9,9 @@ export class TemplateFormComponent implements OnInit {
 
   constructor() { }
 
+  onSubmit(form : any){
+    console.log(form);
+  }
   ngOnInit(): void {
   }
 
