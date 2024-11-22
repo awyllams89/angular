@@ -22,4 +22,10 @@ usuario : any = {
   ngOnInit(): void {
   }
 
+  aplicaCssDeErro(campo:any){
+    return {
+      'is-invalid': !campo.valid && campo.touched
+    }
+  }
+
 }
