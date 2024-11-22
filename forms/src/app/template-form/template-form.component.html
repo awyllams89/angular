@@ -43,7 +43,7 @@
           ngModel
           name="cep"
           #cep="ngModel"
-          (blur)="consultaCEP($event)"
+          (blur)="consultaCEP($event, f)"
           required
         />
         <div class="invalid-feedback">Cep é obrigatório</div>
@@ -64,7 +64,7 @@
       </div>
       <div class="form-group col-md-6">
         <label for="complemento">Complemento</label>
-        <input type="text" class="form-control" id="complemento" />
+        <input type="text" class="form-control" id="complemento" name="complemento" ngModel />
       </div>
     </div>
     <div class="form-group">

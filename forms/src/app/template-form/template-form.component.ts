@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CepService } from '../service/cep.service';
+import { Form, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-template-form',
@@ -29,20 +30,20 @@ usuario : any = {
     }
   }
 
-  consultaCEP($event: Event){
+  consultaCEP($event: Event, form: any){
     let cep = ($event.target as HTMLInputElement).value;
     cep = cep.replace(/\D/g, '');
 
     if (cep != "") {
       var validacep = /^[0-9]{8}$/;
         if(validacep.test(cep)) {
+
+          this.resetForm(form)
+
           this.cepService.consultarCep(cep).subscribe(
             (data) => {
               console.log(data)
-              if (data.erro) {
-
-              } else {
-              }
+              this.populaDadosForm(data,form)
             },
             (err) => {
               console.log("erro: " + err)
@@ -51,6 +52,30 @@ usuario : any = {
 
         }
     }
+  }
+
+  populaDadosForm(dados: any, formulario: any){
+    console.log(dados)
+    formulario.form.patchValue({
+      endereco:{
+        rua: dados.logradouro,
+        complemento: dados.complemento,
+        bairro: dados.bairro,
+        cidade: dados.localidade,
+        estado: dados.uf
+      }
+    });
+  }
+
+  resetForm(formulario: any){
+    formulario.form.patchValue({
+      endereco:{
+        rua: null,
+        complemento: null,
+        bairro: null,
+        cidade: null,
+        estado: null}
+    });
   }
 
 }
