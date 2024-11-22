@@ -1,3 +1,4 @@
+import { PessoaService } from './../service/pessoa.service';
 import { Component, OnInit } from '@angular/core';
 import { CepService } from '../service/cep.service';
 import { Form, FormGroup } from '@angular/forms';
@@ -14,12 +15,16 @@ usuario : any = {
   email:'alan@email.com'
 }
 
-  constructor(private cepService: CepService) { }
+  constructor(private cepService: CepService, private pessoaService: PessoaService) { }
 
   onSubmit(form : any){
-    console.log(form);
+    if(form.valid){
+      const formData = form.value;
+      this.pessoaService.salvarPessoa(formData)
+    } else{
+      console.log("form inválido")
+    }
 
-    console.log(this.usuario)
   }
   ngOnInit(): void {
   }

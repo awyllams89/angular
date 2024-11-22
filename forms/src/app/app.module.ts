@@ -7,6 +7,7 @@ import { DataFormComponent } from './data-form/data-form.component';
 import { TemplateFormModule } from './template-form/template-form.module';
 import { CepService } from './service/cep.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PessoaService } from './service/pessoa.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [CepService],
+  providers: [CepService, PessoaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
