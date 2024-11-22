@@ -5,7 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataFormComponent } from './data-form/data-form.component';
 import { TemplateFormModule } from './template-form/template-form.module';
-
+import { CepService } from './service/cep.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,9 +15,10 @@ import { TemplateFormModule } from './template-form/template-form.module';
   imports: [
     BrowserModule,
     TemplateFormModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CepService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
